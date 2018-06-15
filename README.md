@@ -1,1 +1,1 @@
-# EmbeddableTypes
+# EmbeddableTypes in Hibernate
