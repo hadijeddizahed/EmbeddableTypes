@@ -1,15 +1,13 @@
 package hadi.jeddizahed.sample.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Publisher {
 
-    @Column(name = "publisher_name")
+
     private String name;
 
-    @Column(name = "publisher_country")
     private String country;
 
     public Publisher(String name, String country) {
@@ -17,7 +15,8 @@ public class Publisher {
         this.country = country;
     }
 
-    private Publisher() {}
+    private Publisher() {
+    }
 
     public void setName(String name) {
         this.name = name;

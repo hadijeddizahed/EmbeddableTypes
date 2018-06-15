@@ -1,11 +1,26 @@
 package hadi.jeddizahed.sample.entities;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Book")
+@AttributeOverrides({
+        @AttributeOverride(
+                name = "ebookPublisher.name",
+                column = @Column(name = "ebook_publisher_name")
+        ),
+        @AttributeOverride(
+                name = "paperBackPublisher.name",
+                column = @Column(name = "paper_back_publisher_name")
+        ),
+        @AttributeOverride(
+                name = "ebookPublisher.country",
+                column = @Column(name = "ebook_publisher_country")
+        ),
+        @AttributeOverride(
+                name = "paperBackPublisher.country",
+                column = @Column(name = "paper_back_publisher_country")
+        )
+})
 public class Book {
 
     @Id
@@ -17,15 +32,19 @@ public class Book {
     private String author;
 
     @Embedded
-    private Publisher publisher;
+    private Publisher ebookPublisher;
+
+    @Embedded
+    private Publisher paperBackPublisher;
 
     public Book() {
     }
 
-    public Book(String title, String author, Publisher publisher) {
+    public Book(String title, String author, Publisher ebookPublisher, Publisher paperBackPublisher) {
         this.title = title;
         this.author = author;
-        this.publisher = publisher;
+        this.ebookPublisher = ebookPublisher;
+        this.paperBackPublisher = paperBackPublisher;
     }
 
     public Long getId() {
@@ -40,7 +59,11 @@ public class Book {
         return author;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
+    public Publisher getEbookPublisher() {
+        return ebookPublisher;
+    }
+
+    public Publisher getPaperBackPublisher() {
+        return paperBackPublisher;
     }
 }
